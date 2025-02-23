@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 public class ClientSimulator {
     private static final String BASE_URL = "http://localhost:8080/reservation-system";
     private static final String DEFAULT_ORIGIN = "A";
-    private static final String DEFAULT_DESTINATION = "B";
+    private static final String DEFAULT_DESTINATION = "D";
     private static final String DEFAULT_PASSENGERS_COUNT = "5";
     private static final String DEFAULT_TRAVEL_DATE = LocalDate.now().plusDays(1)
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
