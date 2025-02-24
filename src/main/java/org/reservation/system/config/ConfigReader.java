@@ -10,6 +10,7 @@ public class ConfigReader
     public static void readConfig(Scanner scanner)
     {
         config.setProperty("no_of_users", getInputFromUser("Enter the number of users: ", scanner));
+        config.setProperty("command", getInputFromUser("Optional - Enter the command (check-availability or reserve, default: both)", scanner));
         config.setProperty("origin", getInputFromUser("Optional - Enter the origin (default: A): ", scanner));
         config.setProperty("destination", getInputFromUser("Optional - Enter the destination (default: D): ", scanner));
         config.setProperty("passengers_count", getInputFromUser("Optional - Enter the passengers count (default: 5): ", scanner));

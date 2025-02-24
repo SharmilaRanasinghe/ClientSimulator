@@ -18,17 +18,20 @@ public class ClientSimulator {
     private static final String DEFAULT_PASSENGERS_COUNT = "5";
     private static final String DEFAULT_TRAVEL_DATE = LocalDate.now().plusDays(1)
             .format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    private static final String DEFAULT_COMMAND = "both";
 
     private final static String origin;
     private final static String destination;
     private final static int passengersCount;
     private final static String travelDate;
+    private final static String command;
 
     static {
         origin = getConfigProperty("origin", DEFAULT_ORIGIN);
         destination = getConfigProperty("destination", DEFAULT_DESTINATION);
         passengersCount = Integer.parseInt(getConfigProperty("passengers_count", DEFAULT_PASSENGERS_COUNT));
         travelDate = getConfigProperty("travel_date",  DEFAULT_TRAVEL_DATE);
+        command = getConfigProperty("command", DEFAULT_COMMAND);
     }
 
     private static String getConfigProperty(String property, String defaultValue) {
@@ -40,11 +43,13 @@ public class ClientSimulator {
 
     public static void simulate() {
         try {
-            // Check availability
-            checkAvailability();
 
-            // Reserve ticket
-            reserveSeat();
+            if (!command.equals("reserve")) {
+                checkAvailability();
+            }
+            if (!command.contains("check")) {
+                reserveSeat();
+            }
         } catch (Exception e) {
             System.out.println("Exception occured: " + e.getMessage());
         }
